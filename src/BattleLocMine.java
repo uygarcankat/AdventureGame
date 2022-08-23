@@ -142,103 +142,100 @@ public abstract class BattleLocMine extends Location{
 
     public String randomAward() {
 
-        Random r = new Random();
-        String[] Awards = {"Silah", "Silah", "Silah", "Zırh", "Zırh", "Zırh"
-                , "Para", "Para", "Para", "Para", "Para", "Null", "Null", "Null", "Null", "Null", "Null", "Null", "Null", "Null" };
 
-        int index = r.nextInt(Awards.length);
+        int probability = (int)(Math.random()*100);
 
-        if (Awards[index].equals("Silah")) {
-            String[] x = {"Tüfek", "Tüfek", "kılıç", "kılıç", "kılıç", "Tabanca", "Tabanca", "Tabanca", "Tabanca", "Tabanca" };
-            Random r1 = new Random();
-            int index1 = r1.nextInt(x.length);
+        if (probability <15) {
+            int probability1 = (int) (Math.random() * 100);
 
-            if (x[index1].equals("Tüfek")) {
+            if (probability1 < 20) {
 
                 player.getInv().setDamage(7 + player.getInv().getDamage());
                 player.getInv().setwName("Tüfek");
 
                 return "Tüfek kazandınız ";
 
-
-            } else if (x[index1].equals("kılıç")) {
+            } else if (probability1 > 20 && probability1 < 50) {
 
                 player.getInv().setDamage(3 + player.getInv().getDamage());
                 player.getInv().setwName("kılıç");
 
                 return "kılıç kazandınız ";
 
-            } else if (x[index1].equals("Tabanca")) {
+            } else {
 
                 player.getInv().setDamage(2 + player.getInv().getDamage());
                 player.getInv().setwName("Tabanca");
                 return "Tabanca kazandınız ";
 
             }
+        }
 
-        } else if (Awards[index].equals("Zırh")) {
+        else if(probability  >15 && probability <30){
 
-            String[] x = {"Ağır", "Ağır", "Orta", "Orta", "Orta", "Hafif", "Hafif", "Hafif", "Hafif", "Hafif" };
-            Random r1 = new Random();
-            int index1 = r1.nextInt(x.length);
+            int probability1 = (int)(Math.random()*100);
 
-            if (x[index1].equals("Ağır ")) {
+            if (probability1 < 20){
 
                 player.getInv().setArmor(5 + player.getInv().getArmor());
                 player.getInv().setaName("Ağır Zırh");
 
                 return "Ağır zırh kazandınız ";
 
+            }
 
-            } else if (x[index1].equals("Orta ")) {
+            else if(probability1 > 20 && probability1 < 50){
 
                 player.getInv().setArmor(3 + player.getInv().getArmor());
                 player.getInv().setaName("Orta Zırh");
 
                 return "Orta zırh kazandınız";
 
-            } else if (x[index1].equals("Hafif")) {
+
+
+            }
+
+            else{
 
                 player.getInv().setArmor(1 + player.getInv().getArmor());
                 player.getInv().setaName("Hafif Zırh");
 
-               return "Hafif zırh kazandınız ";
-
+                return "Hafif zırh kazandınız ";
             }
 
+        }
 
-        } else if (Awards[index].equals("Para")) {
+        else if(probability >30 && probability <55){
 
-            int[] x = {10, 10, 5, 5, 5, 1, 1, 1, 1, 1};
-            Random r1 = new Random();
-            int index1 = r1.nextInt(x.length);
+            int probability1 = (int)(Math.random()*100);
 
-            if (x[index1] == 1) {
-
-                player.setMoney(player.getMoney()+1);
-
-                return "1 Para kazandınız ";
-
-            } else if (x[index1] == 5) {
-
-                player.setMoney(player.getMoney()+5);
-                return " 5 Para kazandınız ";
-
-            } else if (x[index1] == 10) {
+            if (probability1 < 20){
 
                 player.setMoney(player.getMoney()+10);
 
                 return "10 Para kazandınız ";
+
             }
 
-        } else if (Awards[index].equals("Null")) {
+            else if(probability1  > 20 && probability1 < 50){
 
+                player.setMoney(player.getMoney()+5);
+                return " 5 Para kazandınız ";}
+
+
+                else{
+
+                    player.setMoney(player.getMoney()+1);
+
+                    return "1 Para kazandınız ";
+                }
+            }
+
+
+        else{
 
             return "Null item ";
-
         }
-
-        return null;
     }
 
 
